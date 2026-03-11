@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="icon" type="image/png" href="img/icon.png" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <link rel="stylesheet" href="css/world.css" />
+  
+  <title>Saved Cities | Portfolio</title>
+</head>
+
+<body>
+  <main id="screen" class="weather-app-container">
+    
+    <header class="section-header">
+      <div class="date" id="current-date">April 7, 2024</div>
+      
+      <button class="add-btn" id="toggle-add-btn" aria-label="Add a new city">
+        <i class="fa-solid fa-circle-plus btn-icon"></i>
+      </button>
+    </header>
+
+    <section class="add-section-container" id="add-section">
+      <div class="add-section">
+        <div class="add-section-title">
+          <h2>Add a new place</h2>
+        </div>
+        
+        <div class="search">
+          <div class="search-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <input class="searchinput" id="add-city-input" type="text" placeholder="Search city to save...">
+        </div>
+        
+        <div class="messages">
+          <div class="error-message" id="error-msg" style="display: none;">City not found</div>
+          <div class="normal-message" id="normal-msg">Search your city to add</div>
+          <div class="added-message" id="success-msg" style="display: none;">Successfully added ✔</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="city-box" id="saved-cities-list">
+        </section>
+
+    <nav class="bottom-nav">
+      <ul>
+        <li>
+          <a href="index.html" aria-label="Current Location">
+            <i class="fa-solid fa-location-arrow"></i>
+          </a>
+        </li>
+        <li>
+          <a href="search.html" aria-label="Search City">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </a>
+        </li>
+        <li>
+          <a class="active" href="world.html" aria-label="Saved Cities">
+            <i class="fa-solid fa-earth-americas"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    
+  </main>
+
+  <script src="js/world.js"></script>
+</body>
+</html>

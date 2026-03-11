@@ -1,0 +1,287 @@
+/* =========================================
+   GLOBAL VARIABLES & RESET
+   ========================================= */
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap");
+
+:root {
+  --font-color-main: #2b2054; /* Slightly darker for better contrast */
+  --white-color: #ffffff;
+  --icon-color: #f1c40f; 
+  /* Glassmorphism Variables */
+  --glass-bg: rgba(255, 255, 255, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+}
+
+/* =========================================
+   MAIN LAYOUT & GORGEOUS BACKGROUND
+   ========================================= */
+body {
+  /* A beautiful, modern sky-blue gradient */
+  background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; 
+}
+
+.weather-app-container {
+  width: 100%; 
+  min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  position: relative; 
+}
+
+/* =========================================
+   HEADER & WEATHER ICON
+   ========================================= */
+.city-name-header {
+  color: var(--font-color-main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px 0 20px;
+  gap: 10px; 
+  text-align: center;
+}
+
+.city-name-header h1 {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.current-weather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.weather-icon-container {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: float 3s ease-in-out infinite; 
+}
+
+.weather-icon-container i {
+  font-size: 130px; 
+  color: var(--icon-color);
+  /* Adds a soft glowing shadow to the sun icon */
+  filter: drop-shadow(0px 10px 15px rgba(241, 196, 15, 0.4));
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* =========================================
+   TEMPERATURE & DETAILS
+   ========================================= */
+.weather-description {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--font-color-main);
+  width: 100%;
+  gap: 20px; 
+}
+
+.show-metric {
+  font-size: 110px;
+  font-weight: 600;
+  line-height: 1; 
+  letter-spacing: -3px;
+}
+
+.weather-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.weather-condition {
+  text-transform: capitalize;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.h-f-details {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 14px;
+}
+
+/* =========================================
+   FORECAST SECTION (GLASSMORPHISM)
+   ========================================= */
+.forecasts-box {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 30px 20px;
+  color: var(--font-color-main);
+  margin-bottom: 80px; 
+}
+
+/* Frosted Glass Cards */
+.today-forecast, .future-forecast {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 24px;
+  padding: 15px;
+}
+
+.today-forecast {
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.today-forecast h4 {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.today-forecast i {
+  font-size: 40px;
+  color: var(--icon-color);
+  margin: 10px 0;
+}
+
+.weather-condition-today {
+  text-transform: capitalize;
+  font-size: 12px;
+  text-align: center;
+}
+
+.future-forecast {
+  flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; 
+}
+
+.future-forecast h5 {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+#future-forecast-box {
+  display: flex;
+  overflow-x: auto; 
+  gap: 12px;
+  padding-bottom: 10px;
+}
+
+#future-forecast-box::-webkit-scrollbar {
+  display: none;
+}
+
+/* Fixed the squished items by adding min-width */
+.weather-forecast-box {
+  min-width: 65px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.day-weather {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.weather-icon-forecast i {
+  font-size: 20px;
+  color: var(--icon-color);
+}
+
+.temp-weather {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.weather-main-forecast {
+  font-size: 11px;
+  text-transform: capitalize;
+  opacity: 0.8;
+}
+
+/* =========================================
+   BOTTOM NAVIGATION
+   ========================================= */
+.bottom-nav {
+  width: 100%;
+  height: 70px;
+  background-color: var(--font-color-main);
+  position: absolute; 
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottom-nav ul {
+  display: flex;
+  gap: 3rem; 
+  list-style: none; 
+}
+
+.bottom-nav ul li a {
+  color: var(--white-color);
+  font-size: 22px;
+  text-decoration: none; 
+  padding: 10px 15px;
+  border-radius: 50px;
+  transition: all 0.3s ease; 
+}
+
+.bottom-nav ul li a.active, 
+.bottom-nav ul li a:hover {
+  background-color: var(--white-color);
+  color: var(--font-color-main);
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (Media Queries)
+   ========================================= */
+@media screen and (min-width: 600px) {
+  .weather-app-container {
+    width: 420px; 
+    min-height: 850px; 
+    border-radius: 40px; 
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3); 
+    overflow: hidden; 
+    /* The widget gets a slightly different gradient to stand out from the page background */
+    background: linear-gradient(145deg, #e0c3fc 0%, #8ec5fc 100%);
+  }
+
+  .bottom-nav {
+    border-radius: 0 0 40px 40px; 
+  }
+}

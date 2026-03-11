@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="icon" type="image/png" href="img/icon.png" />
+    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    
+    <link rel="stylesheet" href="css/style.css" />
+    
+    <title>Weather App | Portfolio</title>
+  </head>
+
+  <body>
+    <main id="screen" class="weather-app-container">
+      
+      <header class="city-name-header">
+        <i class="fa-solid fa-location-dot"></i>
+        <h1 id="city-name">Mumbai</h1>
+      </header>
+
+      <section class="current-weather">
+        <div class="weather-icon-container">
+          <i class="fa-solid fa-sun weather-icon" id="main-weather-icon"></i>
+        </div>
+        
+        <div class="weather-description">
+          <div class="show-metric" id="metric">0°</div>
+          
+          <div class="weather-details">
+            <div class="weather-condition" id="weather-condition">Sunny</div>
+            
+            <div class="h-f-details">
+              <div class="show-humidity">
+                 <i class="fa-solid fa-droplet"></i> H: <span id="humidity">60</span>%
+              </div>
+              <span class="divider">||</span>
+              <div class="show-feels-like">
+                <i class="fa-solid fa-temperature-half"></i> F: <span id="feels-like">60</span>°
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="forecasts-box">
+        
+        <article class="today-forecast">
+          <h4>TODAY</h4>
+          <div class="weather-icon-today">
+            <i class="fa-solid fa-sun weather-icons" id="today-weather-icon"></i>
+          </div>
+          <div class="temp-today">
+            <span id="temp-min-today">50°</span> / <span id="temp-max-today">55°</span>
+          </div>
+          <div class="weather-condition-today" id="weather-condition-today">Sunny</div>
+        </article>
+
+        <article class="future-forecast">
+          <h5>6-DAY FORECAST</h5>
+          <div id="future-forecast-box"></div>
+        </article>
+      </section>
+
+      <nav class="bottom-nav">
+        <ul>
+          <li>
+            <a class="active" href="index.html" aria-label="Current Location">
+              <i class="fa-solid fa-location-arrow"></i>
+            </a>
+          </li>
+          <li>
+            <a href="search.html" aria-label="Search City">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+          </li>
+          <li>
+            <a href="world.html" aria-label="World Weather">
+              <i class="fa-solid fa-earth-americas"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </main>
+    
+    <script src="js/main.js"></script>
+  </body>
+</html>

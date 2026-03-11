@@ -1,0 +1,266 @@
+/* =========================================
+   GLOBAL VARIABLES & RESET
+   ========================================= */
+/* Imports the Rubik font from Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+/* Reusing our global color palette for perfect consistency across the app */
+:root {
+  --font-color-main: #332464;
+  --white-color: #ffffff;
+  --bg-light-blue: #B4D6F3;
+  --app-bg: #E0EEFA;
+  --icon-color: #f1c40f; 
+}
+
+/* Global Reset: Removes default margins and applies the font */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+  list-style: none; /* Removes bullet points globally */
+}
+
+/* =========================================
+   MAIN LAYOUT (Mobile-First)
+   ========================================= */
+/* Centers the app on the screen */
+body {
+  background-color: var(--bg-light-blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Main app container matching the index and search pages */
+.weather-app-container {
+  background-color: var(--app-bg);
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative; /* Crucial for absolute positioning the nav and the add-city modal */
+  overflow: hidden; /* Prevents the hidden add-city modal from causing scrollbars */
+}
+
+/* =========================================
+   HEADER SECTION
+   ========================================= */
+/* Flex container to push the date to the left and the button to the right */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 30px 10px 30px;
+}
+
+/* Styling for the current date text */
+.date {
+  font-weight: 500;
+  font-size: 22px;
+  color: var(--font-color-main);
+}
+
+/* Resets default button styles so it looks like a clean icon */
+.add-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 30px;
+  color: var(--font-color-main);
+  transition: transform 0.2s ease; /* Smooth hover/click effect */
+}
+
+.add-btn:hover {
+  transform: scale(1.1); /* Slightly enlarges the plus icon when hovered */
+}
+
+/* =========================================
+   ADD NEW CITY MODAL (Sliding Animation)
+   ========================================= */
+/* The container for the search popup. Hidden above the screen by default */
+.add-section-container {
+  position: absolute;
+  top: -100%; /* Hides it completely above the app container */
+  left: 50%;
+  transform: translateX(-50%); /* Keeps it perfectly centered horizontally */
+  width: 90%;
+  max-width: 380px;
+  background-color: var(--font-color-main);
+  border-radius: 30px;
+  padding: 30px 20px;
+  transition: top 0.4s ease-in-out; /* The smooth sliding animation you originally designed */
+  z-index: 10; /* Ensures it sits on top of the city cards */
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+/* JavaScript will add this class to slide the modal down into view */
+.add-section-container.show {
+  top: 90px; 
+}
+
+.add-section-title h2 {
+  text-align: center;
+  color: var(--white-color);
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+/* The white search bar inside the dark modal */
+.search {
+  width: 100%;
+  height: 45px;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--white-color);
+  padding: 0 15px;
+}
+
+.search-icon i {
+  font-size: 16px;
+  color: var(--font-color-main);
+  margin-right: 10px;
+}
+
+/* The actual text input area */
+.searchinput {
+  width: 100%;
+  font-size: 15px;
+  color: var(--font-color-main);
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.searchinput::placeholder {
+  color: var(--font-color-main);
+  opacity: 0.6;
+}
+
+/* Notification text (Success/Error) */
+.messages {
+  color: var(--white-color);
+  font-size: 14px;
+  text-align: center;
+  font-weight: 500;
+  margin-top: 15px;
+  height: 20px; /* Fixed height so the modal doesn't jump in size when messages appear */
+}
+
+/* =========================================
+   SAVED CITIES LIST
+   ========================================= */
+/* Container that holds all the saved location cards */
+.city-box {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 90px; /* Prevents the bottom nav from hiding the last card */
+  overflow-y: auto; /* Allows scrolling if the user saves a lot of cities */
+}
+
+/* Hides the scrollbar for a cleaner look */
+.city-box::-webkit-scrollbar {
+  display: none;
+}
+
+/* The individual dark card for a saved city */
+.weather-box {
+  width: 100%;
+  height: 140px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--font-color-main);
+  padding: 0 30px;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  color: var(--white-color);
+}
+
+.city-name {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.weather-temp {
+  font-size: 50px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* Styling for the FontAwesome icon inside the saved city card */
+.weather-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.weather-icon-container i {
+  font-size: 60px;
+  color: var(--icon-color);
+}
+
+/* =========================================
+   BOTTOM NAVIGATION
+   ========================================= */
+/* Reused exactly from index.html and search.html */
+.bottom-nav {
+  width: 100%;
+  height: 70px;
+  background-color: var(--font-color-main);
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100; /* Ensures nav is always on top */
+}
+
+.bottom-nav ul {
+  display: flex;
+  gap: 3rem;
+  list-style: none;
+}
+
+.bottom-nav ul li a {
+  color: var(--white-color);
+  font-size: 22px;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.bottom-nav ul li a.active, 
+.bottom-nav ul li a:hover {
+  background-color: var(--white-color);
+  color: var(--font-color-main);
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (Media Queries)
+   ========================================= */
+/* For Tablets and Desktop Monitors */
+@media screen and (min-width: 600px) {
+  .weather-app-container {
+    width: 450px;
+    min-height: 850px;
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  }
+
+  .bottom-nav {
+    border-radius: 0 0 30px 30px;
+  }
+}
